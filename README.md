@@ -1,30 +1,46 @@
-# 硬件工程师工具箱
+# 硬件工程师工具箱 | Hardware Tools Portal
 
-> 🔗 **[在线访问](https://27834853-ctrl.github.io/hardware-tools-portal/)**
+> 硬件工程师在线工具箱，汇聚多个专业设计计算工具，覆盖电源/PCB/信号完整性/模拟/数字全领域
 
-专为嵌入式与硬件工程师设计的在线工具集入口，汇聚全部硬件设计工具，支持搜索和分类过滤。
+🔗 **在线使用**: https://27834853-ctrl.github.io/hardware-tools-portal/
 
----
+## 功能模块
 
-## 收录工具（7 个，全部在线）
+收录以下专业工具：
 
-| 工具 | 分类 | 链接 |
-|------|------|------|
-| DCDC Buck 设计中心 | 电源设计 | [打开](https://27834853-ctrl.github.io/dcdc-buck-design/) |
-| 原理图自动检查器 | 工具 | [打开](https://27834853-ctrl.github.io/schematic-auto-checker/) |
-| 电源时序检查器 | 电源设计 | [打开](https://27834853-ctrl.github.io/power-sequence-checker/) |
-| MIPI 带宽计算器 | 摄像头 | [打开](https://27834853-ctrl.github.io/mipi-bandwidth-calculator/) |
-| PCB 叠层阻抗计算器 | 信号完整性 | [打开](https://27834853-ctrl.github.io/pcb-stackup-calculator/) |
-| 电机驱动设计指南 | 知识库 | [打开](https://27834853-ctrl.github.io/motor-drive-guide/) |
-| Camera 开发指南 | 摄像头 | [打开](https://27834853-ctrl.github.io/camera-dev-guide/) |
+- 🔋 **DCDC Buck 设计** — 同步 Buck 变换器全流程设计
+- 📐 **PCB 叠层阻抗** — Hammerstad & Jensen 精确计算
+- ⚡ **PCB 走线载流** — IPC-2221 载流/阻抗反算
+- 🔌 **FPC SI 设计** — 差分阻抗/弯折可靠性/MIPI规则
+- 📷 **MIPI 带宽** — CSI-2 D-PHY/C-PHY 带宽规划
+- ⏰ **晶振设计** — 负载电容/VCXO/差分时钟驱动
+- 🔵 **去耦电容 PDN** — 目标阻抗/并联优化/BGA布局
+- 🕐 **电源时序** — 上电/下电时序可视化与违规检测
+- ⚡ **ESD/TVS 设计** — IEC 61000-4-2 / MIPI ESD 专项
+- 🎛️ **滤波器设计** — RC/LC/有源/EMI/阻抗匹配
+- 🔋 **电池充电** — CC/CV 曲线/BMS 保护/续航估算
+- 🔩 **HDI 盲孔** — BGA 扇出/μVia AR/叠层方案
+- 🔀 **接口电平** — 逻辑族兼容性判断/IC 选型
 
-## 功能
+## 快速开始
 
-- 🔍 实时搜索（名称 / 描述 / 标签）
-- 🏷️ 分类过滤（电源设计 / 信号完整性 / 摄像头 / 知识库 / 工具）
-- 📊 统计栏（在线工具数量）
-- ✨ 卡片动画 + 悬停发光效果
+1. 打开 https://27834853-ctrl.github.io/hardware-tools-portal/
+2. 使用顶部 Tab 筛选工具类别（电源 / PCB / 信号完整性 / 数字 / 模拟）
+3. 搜索框输入关键词快速定位（如输入 "MIPI" 或 "via"）
+4. 点击工具卡片「打开工具 →」即可跳转到对应工具
 
-## 技术
+## 使用场景示例
 
-单文件 `index.html`，纯前端，无后端依赖，Font Awesome CDN。
+1. **新项目选型**：在电源类别下找到 DCDC Buck 设计工具 → 快速估算电感和电容值
+2. **PCB 设计检查**：搜索 "阻抗" → 进入叠层阻抗计算器验证差分对线宽
+3. **ESD 方案选型**：搜索 "ESD" → 进入 ESD/TVS 工具，一键推荐 MIPI 接口保护器件
+
+## 技术规格
+
+- 纯前端工具箱，无需后端，直接 GitHub Pages 部署
+- 支持关键词搜索、分类筛选
+- 所有子工具独立访问，工具箱作为统一入口
+
+## 工具箱
+
+🏠 当前页面即为硬件工具箱主页
