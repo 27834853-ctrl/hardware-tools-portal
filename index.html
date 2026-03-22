@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>硬件工程师工具箱</title>
+  <title>纭欢宸ョ▼甯堝伐鍏风</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
       line-height: 1.6;
     }
 
-    /* ── HEADER ─────────────────────────────────────── */
+    /* 鈹€鈹€ HEADER 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     header {
       background: linear-gradient(135deg, #0d1526 0%, #0a0f1e 60%);
       border-bottom: 1px solid var(--border);
@@ -85,7 +85,7 @@
     }
     .gh-btn:hover { border-color: var(--blue); color: var(--text); }
 
-    /* ── HERO ────────────────────────────────────────── */
+    /* 鈹€鈹€ HERO 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     .hero {
       text-align: center;
       padding: 4rem 2rem 2.5rem;
@@ -106,7 +106,7 @@
       margin: 0 auto;
     }
 
-    /* ── STATS ───────────────────────────────────────── */
+    /* 鈹€鈹€ STATS 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     .stats {
       display: flex;
       gap: 1rem;
@@ -137,7 +137,7 @@
       margin-top: 0.25rem;
     }
 
-    /* ── FILTER BAR ──────────────────────────────────── */
+    /* 鈹€鈹€ FILTER BAR 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     .filter-bar {
       max-width: 1200px;
       margin: 2.5rem auto 0;
@@ -198,7 +198,7 @@
       font-weight: 600;
     }
 
-    /* ── GRID ────────────────────────────────────────── */
+    /* 鈹€鈹€ GRID 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     .grid-section {
       max-width: 1200px;
       margin: 2rem auto 4rem;
@@ -228,7 +228,7 @@
                   border-color var(--transition), box-shadow var(--transition);
     }
     .card.visible { opacity: 1; transform: translateY(0); }
-    .card:not(.coming-soon):hover {
+    .card:not(.active):hover {
       border-color: var(--blue);
       box-shadow: 0 0 24px var(--blue-glow), 0 8px 24px #0006;
       transform: translateY(-6px);
@@ -242,7 +242,7 @@
       opacity: 0;
       transition: opacity var(--transition);
     }
-    .card:not(.coming-soon):hover::before { opacity: 1; }
+    .card:not(.active):hover::before { opacity: 1; }
 
     .card-icon {
       width: 52px;
@@ -316,8 +316,8 @@
       transform: none;
     }
 
-    /* ── COMING SOON ─────────────────────────────────── */
-    .coming-soon-badge {
+    /* 鈹€鈹€ COMING SOON 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
+    .active-badge {
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -330,10 +330,10 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .card.coming-soon {
+    .card.active {
       opacity: 0.65 !important;
     }
-    .card.coming-soon::after {
+    .card.active::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -341,7 +341,7 @@
       pointer-events: none;
     }
 
-    /* ── EMPTY STATE ─────────────────────────────────── */
+    /* 鈹€鈹€ EMPTY STATE 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
@@ -352,7 +352,7 @@
     .empty-state i { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
     .empty-state p { font-size: 1rem; }
 
-    /* ── FOOTER ──────────────────────────────────────── */
+    /* 鈹€鈹€ FOOTER 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem;
@@ -363,7 +363,7 @@
     footer a { color: var(--blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── SCROLLBAR ───────────────────────────────────── */
+    /* 鈹€鈹€ SCROLLBAR 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -372,12 +372,12 @@
 </head>
 <body>
 
-  <!-- ── HEADER ── -->
+  <!-- 鈹€鈹€ HEADER 鈹€鈹€ -->
   <header>
     <div class="header-inner">
       <a class="logo" href="#">
-        <span class="logo-icon">🔧</span>
-        硬件工程师<span>工具箱</span>
+        <span class="logo-icon">馃敡</span>
+        纭欢宸ョ▼甯?span>宸ュ叿绠?/span>
       </a>
       <a class="gh-btn" href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
         <i class="fa-brands fa-github"></i> GitHub
@@ -385,102 +385,102 @@
     </div>
   </header>
 
-  <!-- ── HERO ── -->
+  <!-- 鈹€鈹€ HERO 鈹€鈹€ -->
   <section class="hero">
-    <h1>专业硬件设计工具集<br/><span class="accent">一站式工程师工具箱</span></h1>
-    <p>专为嵌入式与硬件工程师设计的在线工具集 · 持续更新</p>
+    <h1>涓撲笟纭欢璁捐宸ュ叿闆?br/><span class="accent">涓€绔欏紡宸ョ▼甯堝伐鍏风</span></h1>
+    <p>涓撲负宓屽叆寮忎笌纭欢宸ョ▼甯堣璁＄殑鍦ㄧ嚎宸ュ叿闆?路 鎸佺画鏇存柊</p>
   </section>
 
-  <!-- ── STATS ── -->
+  <!-- 鈹€鈹€ STATS 鈹€鈹€ -->
   <div class="stats">
     <div class="stat-card">
       <div class="stat-num">7</div>
-      <div class="stat-label">工具总数</div>
+      <div class="stat-label">宸ュ叿鎬绘暟</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">6</div>
-      <div class="stat-label">在线可用</div>
+      <div class="stat-label">鍦ㄧ嚎鍙敤</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">1</div>
-      <div class="stat-label">即将推出</div>
+      <div class="stat-label">鍗冲皢鎺ㄥ嚭</div>
     </div>
   </div>
 
-  <!-- ── FILTER BAR ── -->
+  <!-- 鈹€鈹€ FILTER BAR 鈹€鈹€ -->
   <div class="filter-bar">
     <div class="search-wrap">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input class="search-input" id="searchInput" type="text" placeholder="搜索工具..." />
+      <input class="search-input" id="searchInput" type="text" placeholder="鎼滅储宸ュ叿..." />
     </div>
     <div class="tabs" id="tabs">
-      <button class="tab active" data-cat="全部">全部</button>
-      <button class="tab" data-cat="电源设计">电源设计</button>
-      <button class="tab" data-cat="信号完整性">信号完整性</button>
-      <button class="tab" data-cat="摄像头">摄像头</button>
-      <button class="tab" data-cat="知识库">知识库</button>
-      <button class="tab" data-cat="工具">工具</button>
+      <button class="tab active" data-cat="鍏ㄩ儴">鍏ㄩ儴</button>
+      <button class="tab" data-cat="鐢垫簮璁捐">鐢垫簮璁捐</button>
+      <button class="tab" data-cat="淇″彿瀹屾暣鎬?>淇″彿瀹屾暣鎬?/button>
+      <button class="tab" data-cat="鎽勫儚澶?>鎽勫儚澶?/button>
+      <button class="tab" data-cat="鐭ヨ瘑搴?>鐭ヨ瘑搴?/button>
+      <button class="tab" data-cat="宸ュ叿">宸ュ叿</button>
     </div>
   </div>
 
-  <!-- ── GRID ── -->
+  <!-- 鈹€鈹€ GRID 鈹€鈹€ -->
   <section class="grid-section">
     <div class="grid" id="grid">
 
       <!-- Card 1: DCDC Buck -->
-      <div class="card" data-cat="电源设计" data-search="dcdc buck 设计中心 电源设计 环路补偿 热分析 参数计算 效率预测 纹波分析 瞬态响应">
+      <div class="card" data-cat="鐢垫簮璁捐" data-search="dcdc buck 璁捐涓績 鐢垫簮璁捐 鐜矾琛ュ伩 鐑垎鏋?鍙傛暟璁＄畻 鏁堢巼棰勬祴 绾规尝鍒嗘瀽 鐬€佸搷搴?>
         <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-        <div class="card-title">DCDC Buck 设计中心</div>
-        <div class="card-desc">完整 Buck 设计流程工具，含参数计算、环路补偿、热设计、效率预测、纹波分析、瞬态响应。</div>
+        <div class="card-title">DCDC Buck 璁捐涓績</div>
+        <div class="card-desc">瀹屾暣 Buck 璁捐娴佺▼宸ュ叿锛屽惈鍙傛暟璁＄畻銆佺幆璺ˉ鍋裤€佺儹璁捐銆佹晥鐜囬娴嬨€佺汗娉㈠垎鏋愩€佺灛鎬佸搷搴斻€?/div>
         <div class="card-tags">
-          <span class="tag">电源设计</span>
+          <span class="tag">鐢垫簮璁捐</span>
           <span class="tag">DCDC</span>
-          <span class="tag">环路补偿</span>
-          <span class="tag">热分析</span>
+          <span class="tag">鐜矾琛ュ伩</span>
+          <span class="tag">鐑垎鏋?/span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/dcdc-buck-design/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐢垫簮璁捐</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/dcdc-buck-design/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Card 2: 原理图自动检查器 -->
-      <div class="card" data-cat="工具" data-search="原理图 自动检查器 erc 电容过压 单网络悬空 i2c 冲突 pull-up 违规 语义级">
+      <!-- Card 2: 鍘熺悊鍥捐嚜鍔ㄦ鏌ュ櫒 -->
+      <div class="card" data-cat="宸ュ叿" data-search="鍘熺悊鍥?鑷姩妫€鏌ュ櫒 erc 鐢靛杩囧帇 鍗曠綉缁滄偓绌?i2c 鍐茬獊 pull-up 杩濊 璇箟绾?>
         <div class="card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class="card-title">原理图自动检查器</div>
-        <div class="card-desc">语义级原理图检查，识别电容过压、单网络悬空、I2C 冲突、Pull-up 违规。</div>
+        <div class="card-title">鍘熺悊鍥捐嚜鍔ㄦ鏌ュ櫒</div>
+        <div class="card-desc">璇箟绾у師鐞嗗浘妫€鏌ワ紝璇嗗埆鐢靛杩囧帇銆佸崟缃戠粶鎮┖銆両2C 鍐茬獊銆丳ull-up 杩濊銆?/div>
         <div class="card-tags">
-          <span class="tag">原理图</span>
+          <span class="tag">鍘熺悊鍥?/span>
           <span class="tag">ERC</span>
-          <span class="tag">自动检查</span>
+          <span class="tag">鑷姩妫€鏌?/span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/schematic-auto-checker/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>宸ュ叿</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/schematic-auto-checker/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Card 3: 电源时序检查器 -->
-      <div class="card" data-cat="电源设计" data-search="电源时序 检查器 pdn qualcomm 上电顺序 时序违规 循环依赖">
+      <!-- Card 3: 鐢垫簮鏃跺簭妫€鏌ュ櫒 -->
+      <div class="card" data-cat="鐢垫簮璁捐" data-search="鐢垫簮鏃跺簭 妫€鏌ュ櫒 pdn qualcomm 涓婄數椤哄簭 鏃跺簭杩濊 寰幆渚濊禆">
         <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
-        <div class="card-title">电源时序检查器</div>
-        <div class="card-desc">定义上电顺序，检测时序违规和循环依赖，支持 Qualcomm PDN 规范。</div>
+        <div class="card-title">鐢垫簮鏃跺簭妫€鏌ュ櫒</div>
+        <div class="card-desc">瀹氫箟涓婄數椤哄簭锛屾娴嬫椂搴忚繚瑙勫拰寰幆渚濊禆锛屾敮鎸?Qualcomm PDN 瑙勮寖銆?/div>
         <div class="card-tags">
-          <span class="tag">电源时序</span>
+          <span class="tag">鐢垫簮鏃跺簭</span>
           <span class="tag">PDN</span>
           <span class="tag">Qualcomm</span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/power-sequence-checker/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐢垫簮璁捐</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/power-sequence-checker/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Card 4: MIPI 带宽计算器 -->
-      <div class="card" data-cat="摄像头" data-search="mipi 带宽 计算器 d-phy c-phy camera 摄像头 高通 soc 多路">
+      <!-- Card 4: MIPI 甯﹀璁＄畻鍣?-->
+      <div class="card" data-cat="鎽勫儚澶? data-search="mipi 甯﹀ 璁＄畻鍣?d-phy c-phy camera 鎽勫儚澶?楂橀€?soc 澶氳矾">
         <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
-        <div class="card-title">MIPI 带宽计算器</div>
-        <div class="card-desc">D-PHY / C-PHY 带宽计算，支持多路摄像头聚合，内置高通 SoC 带宽规格。</div>
+        <div class="card-title">MIPI 甯﹀璁＄畻鍣?/div>
+        <div class="card-desc">D-PHY / C-PHY 甯﹀璁＄畻锛屾敮鎸佸璺憚鍍忓ご鑱氬悎锛屽唴缃珮閫?SoC 甯﹀瑙勬牸銆?/div>
         <div class="card-tags">
           <span class="tag">MIPI</span>
           <span class="tag">Camera</span>
@@ -488,89 +488,89 @@
           <span class="tag">C-PHY</span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>摄像头</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/mipi-bandwidth-calculator/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鎽勫儚澶?/span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/mipi-bandwidth-calculator/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Card 5: PCB 叠层阻抗计算器 (coming soon) -->
+      <!-- Card 5: PCB 鍙犲眰闃绘姉璁＄畻鍣?(coming soon) -->
       <!-- url: https://27834853-ctrl.github.io/pcb-stackup-calculator/ -->
-      <div class="card coming-soon" data-cat="信号完整性" data-search="pcb 叠层 阻抗 计算器 微带线 带状线 差分阻抗 usb pcie si">
-        <div class="coming-soon-badge">即将上线</div>
+      <div class="card active" data-cat="淇″彿瀹屾暣鎬? data-search="pcb 鍙犲眰 闃绘姉 璁＄畻鍣?寰甫绾?甯︾姸绾?宸垎闃绘姉 usb pcie si">
+        <div class="active-badge">鍗冲皢涓婄嚎</div>
         <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
-        <div class="card-title">PCB 叠层阻抗计算器</div>
-        <div class="card-desc">微带线/带状线特征阻抗计算，MIPI/USB/PCIe 差分阻抗校验，宽度反算。</div>
+        <div class="card-title">PCB 鍙犲眰闃绘姉璁＄畻鍣?/div>
+        <div class="card-desc">寰甫绾?甯︾姸绾跨壒寰侀樆鎶楄绠楋紝MIPI/USB/PCIe 宸垎闃绘姉鏍￠獙锛屽搴﹀弽绠椼€?/div>
         <div class="card-tags">
           <span class="tag">PCB</span>
-          <span class="tag">阻抗</span>
-          <span class="tag">叠层</span>
+          <span class="tag">闃绘姉</span>
+          <span class="tag">鍙犲眰</span>
           <span class="tag">SI</span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
-          <button class="open-btn" disabled>即将上线 <i class="fa-solid fa-clock"></i></button>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>淇″彿瀹屾暣鎬?/span>
+          <button class="open-btn" disabled>鍗冲皢涓婄嚎 <i class="fa-solid fa-clock"></i></button>
         </div>
       </div>
 
-      <!-- Card 6: 电机驱动设计指南 -->
-      <div class="card" data-cat="知识库" data-search="电机 驱动 设计指南 机器人 功率级 栅极驱动 保护电路 hardware">
+      <!-- Card 6: 鐢垫満椹卞姩璁捐鎸囧崡 -->
+      <div class="card" data-cat="鐭ヨ瘑搴? data-search="鐢垫満 椹卞姩 璁捐鎸囧崡 鏈哄櫒浜?鍔熺巼绾?鏍呮瀬椹卞姩 淇濇姢鐢佃矾 hardware">
         <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
-        <div class="card-title">电机驱动设计指南</div>
-        <div class="card-desc">机器人电机驱动硬件设计知识库，涵盖功率级、栅极驱动、保护电路。</div>
+        <div class="card-title">鐢垫満椹卞姩璁捐鎸囧崡</div>
+        <div class="card-desc">鏈哄櫒浜虹數鏈洪┍鍔ㄧ‖浠惰璁＄煡璇嗗簱锛屾兜鐩栧姛鐜囩骇銆佹爡鏋侀┍鍔ㄣ€佷繚鎶ょ數璺€?/div>
         <div class="card-tags">
-          <span class="tag">电机</span>
-          <span class="tag">驱动</span>
-          <span class="tag">机器人</span>
+          <span class="tag">鐢垫満</span>
+          <span class="tag">椹卞姩</span>
+          <span class="tag">鏈哄櫒浜?/span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>知识库</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/motor-drive-guide/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐭ヨ瘑搴?/span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/motor-drive-guide/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Card 7: Camera 开发指南 -->
-      <div class="card" data-cat="摄像头" data-search="camera 开发指南 mipi isp vcm 硬件开发 全流程">
+      <!-- Card 7: Camera 寮€鍙戞寚鍗?-->
+      <div class="card" data-cat="鎽勫儚澶? data-search="camera 寮€鍙戞寚鍗?mipi isp vcm 纭欢寮€鍙?鍏ㄦ祦绋?>
         <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
-        <div class="card-title">Camera 开发指南</div>
-        <div class="card-desc">Camera 硬件开发全流程知识库，覆盖 MIPI、ISP、VCM 等。</div>
+        <div class="card-title">Camera 寮€鍙戞寚鍗?/div>
+        <div class="card-desc">Camera 纭欢寮€鍙戝叏娴佺▼鐭ヨ瘑搴擄紝瑕嗙洊 MIPI銆両SP銆乂CM 绛夈€?/div>
         <div class="card-tags">
           <span class="tag">Camera</span>
           <span class="tag">MIPI</span>
           <span class="tag">ISP</span>
         </div>
         <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>摄像头</span>
-          <a class="open-btn" href="https://27834853-ctrl.github.io/camera-dev-guide/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鎽勫儚澶?/span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/camera-dev-guide/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
       <!-- Empty state -->
       <div class="empty-state" id="emptyState">
         <i class="fa-solid fa-circle-exclamation"></i>
-        <p>没有找到匹配的工具，试试其他关键词？</p>
+        <p>娌℃湁鎵惧埌鍖归厤鐨勫伐鍏凤紝璇曡瘯鍏朵粬鍏抽敭璇嶏紵</p>
       </div>
 
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- 鈹€鈹€ FOOTER 鈹€鈹€ -->
   <footer>
-    <p>© 2026 硬件工程师工具箱 · 持续更新中 &nbsp;·&nbsp; <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></p>
+    <p>漏 2026 纭欢宸ョ▼甯堝伐鍏风 路 鎸佺画鏇存柊涓?&nbsp;路&nbsp; <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></p>
   </footer>
 
   <script>
-    // ── Stagger fade-in ──────────────────────────────────────────────────────
+    // 鈹€鈹€ Stagger fade-in 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, i) => {
       setTimeout(() => card.classList.add('visible'), 80 + i * 80);
     });
 
-    // ── Filter logic ─────────────────────────────────────────────────────────
+    // 鈹€鈹€ Filter logic 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
     const searchInput = document.getElementById('searchInput');
     const tabBtns     = document.querySelectorAll('.tab');
     const emptyState  = document.getElementById('emptyState');
 
-    let activeCategory = '全部';
+    let activeCategory = '鍏ㄩ儴';
 
     function filterCards() {
       const q = searchInput.value.trim().toLowerCase();
@@ -580,7 +580,7 @@
         const cat    = card.dataset.cat  || '';
         const search = (card.dataset.search || '') + ' ' + (card.querySelector('.card-title')?.textContent || '');
 
-        const matchCat    = activeCategory === '全部' || cat === activeCategory;
+        const matchCat    = activeCategory === '鍏ㄩ儴' || cat === activeCategory;
         const matchSearch = !q || search.toLowerCase().includes(q);
 
         if (matchCat && matchSearch) {
