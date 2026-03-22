@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>硬件工程师工具箱</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0f1e;
+      --bg-card:   #111827;
+      --bg-card2:  #1a2236;
+      --border:    #1e2d45;
+      --blue:      #3b82f6;
+      --blue-glow: #3b82f655;
+      --blue-dark: #1d4ed8;
+      --text:      #f1f5f9;
+      --muted:     #94a3b8;
+      --tag-bg:    #1e3a5f;
+      --tag-text:  #93c5fd;
+      --radius:    12px;
+      --transition: 0.25s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #0d1526 0%, #0a0f1e 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .logo-icon {
+      font-size: 1.4rem;
+    }
+    .logo span { color: var(--blue); }
+
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: border-color var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+    .gh-btn:hover { border-color: var(--blue); color: var(--text); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2.5rem;
+      background: radial-gradient(ellipse 80% 40% at 50% 0%, #1a2d5a44 0%, transparent 70%);
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 .accent { color: var(--blue); }
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── STATS ───────────────────────────────────────── */
+    .stats {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 2rem 2rem 0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 2rem;
+      text-align: center;
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── FILTER BAR ──────────────────────────────────── */
+    .filter-bar {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { border-color: var(--blue); }
+
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .tab:hover { border-color: var(--blue); color: var(--text); }
+    .tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ── GRID ────────────────────────────────────────── */
+    .grid-section {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease,
+                  border-color var(--transition), box-shadow var(--transition);
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:not(.coming-soon):hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 24px var(--blue-glow), 0 8px 24px #0006;
+      transform: translateY(-6px);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .card:not(.coming-soon):hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #1e3a5f, #1a2d55);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+    .card-category {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 1rem;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background var(--transition), transform 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .open-btn:hover { background: var(--blue-dark); transform: translateX(2px); }
+    .open-btn:disabled {
+      background: #2a3650;
+      color: var(--muted);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── COMING SOON ─────────────────────────────────── */
+    .coming-soon-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #f59e0b;
+      color: #0a0f1e;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .card.coming-soon {
+      opacity: 0.65 !important;
+    }
+    .card.coming-soon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,15,30,0.35);
+      pointer-events: none;
+    }
+
+    /* ── EMPTY STATE ─────────────────────────────────── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+      display: none;
+    }
+    .empty-state i { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .empty-state p { font-size: 1rem; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── SCROLLBAR ───────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <span class="logo-icon">🔧</span>
+        硬件工程师<span>工具箱</span>
+      </a>
+      <a class="gh-btn" href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <h1>专业硬件设计工具集<br/><span class="accent">一站式工程师工具箱</span></h1>
+    <p>专为嵌入式与硬件工程师设计的在线工具集 · 持续更新</p>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">7</div>
+      <div class="stat-label">工具总数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">6</div>
+      <div class="stat-label">在线可用</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">即将推出</div>
+    </div>
+  </div>
+
+  <!-- ── FILTER BAR ── -->
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="search-input" id="searchInput" type="text" placeholder="搜索工具..." />
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="全部">全部</button>
+      <button class="tab" data-cat="电源设计">电源设计</button>
+      <button class="tab" data-cat="信号完整性">信号完整性</button>
+      <button class="tab" data-cat="摄像头">摄像头</button>
+      <button class="tab" data-cat="知识库">知识库</button>
+      <button class="tab" data-cat="工具">工具</button>
+    </div>
+  </div>
+
+  <!-- ── GRID ── -->
+  <section class="grid-section">
+    <div class="grid" id="grid">
+
+      <!-- Card 1: DCDC Buck -->
+      <div class="card" data-cat="电源设计" data-search="dcdc buck 设计中心 电源设计 环路补偿 热分析 参数计算 效率预测 纹波分析 瞬态响应">
+        <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="card-title">DCDC Buck 设计中心</div>
+        <div class="card-desc">完整 Buck 设计流程工具，含参数计算、环路补偿、热设计、效率预测、纹波分析、瞬态响应。</div>
+        <div class="card-tags">
+          <span class="tag">电源设计</span>
+          <span class="tag">DCDC</span>
+          <span class="tag">环路补偿</span>
+          <span class="tag">热分析</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/dcdc-buck-design/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 2: 原理图自动检查器 -->
+      <div class="card" data-cat="工具" data-search="原理图 自动检查器 erc 电容过压 单网络悬空 i2c 冲突 pull-up 违规 语义级">
+        <div class="card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="card-title">原理图自动检查器</div>
+        <div class="card-desc">语义级原理图检查，识别电容过压、单网络悬空、I2C 冲突、Pull-up 违规。</div>
+        <div class="card-tags">
+          <span class="tag">原理图</span>
+          <span class="tag">ERC</span>
+          <span class="tag">自动检查</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/schematic-auto-checker/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 3: 电源时序检查器 -->
+      <div class="card" data-cat="电源设计" data-search="电源时序 检查器 pdn qualcomm 上电顺序 时序违规 循环依赖">
+        <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <div class="card-title">电源时序检查器</div>
+        <div class="card-desc">定义上电顺序，检测时序违规和循环依赖，支持 Qualcomm PDN 规范。</div>
+        <div class="card-tags">
+          <span class="tag">电源时序</span>
+          <span class="tag">PDN</span>
+          <span class="tag">Qualcomm</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/power-sequence-checker/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 4: MIPI 带宽计算器 -->
+      <div class="card" data-cat="摄像头" data-search="mipi 带宽 计算器 d-phy c-phy camera 摄像头 高通 soc 多路">
+        <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+        <div class="card-title">MIPI 带宽计算器</div>
+        <div class="card-desc">D-PHY / C-PHY 带宽计算，支持多路摄像头聚合，内置高通 SoC 带宽规格。</div>
+        <div class="card-tags">
+          <span class="tag">MIPI</span>
+          <span class="tag">Camera</span>
+          <span class="tag">D-PHY</span>
+          <span class="tag">C-PHY</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>摄像头</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/mipi-bandwidth-calculator/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 5: PCB 叠层阻抗计算器 (coming soon) -->
+      <!-- url: https://27834853-ctrl.github.io/pcb-stackup-calculator/ -->
+      <div class="card coming-soon" data-cat="信号完整性" data-search="pcb 叠层 阻抗 计算器 微带线 带状线 差分阻抗 usb pcie si">
+        <div class="coming-soon-badge">即将上线</div>
+        <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="card-title">PCB 叠层阻抗计算器</div>
+        <div class="card-desc">微带线/带状线特征阻抗计算，MIPI/USB/PCIe 差分阻抗校验，宽度反算。</div>
+        <div class="card-tags">
+          <span class="tag">PCB</span>
+          <span class="tag">阻抗</span>
+          <span class="tag">叠层</span>
+          <span class="tag">SI</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
+          <button class="open-btn" disabled>即将上线 <i class="fa-solid fa-clock"></i></button>
+        </div>
+      </div>
+
+      <!-- Card 6: 电机驱动设计指南 -->
+      <div class="card" data-cat="知识库" data-search="电机 驱动 设计指南 机器人 功率级 栅极驱动 保护电路 hardware">
+        <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+        <div class="card-title">电机驱动设计指南</div>
+        <div class="card-desc">机器人电机驱动硬件设计知识库，涵盖功率级、栅极驱动、保护电路。</div>
+        <div class="card-tags">
+          <span class="tag">电机</span>
+          <span class="tag">驱动</span>
+          <span class="tag">机器人</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>知识库</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/motor-drive-guide/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 7: Camera 开发指南 -->
+      <div class="card" data-cat="摄像头" data-search="camera 开发指南 mipi isp vcm 硬件开发 全流程">
+        <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+        <div class="card-title">Camera 开发指南</div>
+        <div class="card-desc">Camera 硬件开发全流程知识库，覆盖 MIPI、ISP、VCM 等。</div>
+        <div class="card-tags">
+          <span class="tag">Camera</span>
+          <span class="tag">MIPI</span>
+          <span class="tag">ISP</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>摄像头</span>
+          <a class="open-btn" href="https://27834853-ctrl.github.io/camera-dev-guide/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <p>没有找到匹配的工具，试试其他关键词？</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 硬件工程师工具箱 · 持续更新中 &nbsp;·&nbsp; <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></p>
+  </footer>
+
+  <script>
+    // ── Stagger fade-in ──────────────────────────────────────────────────────
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, i) => {
+      setTimeout(() => card.classList.add('visible'), 80 + i * 80);
+    });
+
+    // ── Filter logic ─────────────────────────────────────────────────────────
+    const searchInput = document.getElementById('searchInput');
+    const tabBtns     = document.querySelectorAll('.tab');
+    const emptyState  = document.getElementById('emptyState');
+
+    let activeCategory = '全部';
+
+    function filterCards() {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat    = card.dataset.cat  || '';
+        const search = (card.dataset.search || '') + ' ' + (card.querySelector('.card-title')?.textContent || '');
+
+        const matchCat    = activeCategory === '全部' || cat === activeCategory;
+        const matchSearch = !q || search.toLowerCase().includes(q);
+
+        if (matchCat && matchSearch) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      emptyState.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.cat;
+        filterCards();
+      });
+    });
+
+    searchInput.addEventListener('input', filterCards);
+  </script>
+
+</body>
+</html>
