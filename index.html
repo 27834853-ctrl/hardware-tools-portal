@@ -162,7 +162,7 @@
     }
     .search-input {
       width: 100%;
-      padding: 0.65rem 1rem 0.65rem 2.4rem;
+      padding: 0.65rem 7rem 0.65rem 2.4rem;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -411,7 +411,8 @@
   <div class="filter-bar">
     <div class="search-wrap">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input class="search-input" id="searchInput" type="text" placeholder="鎼滅储宸ュ叿..." />
+      <input class="search-input" id="searchInput" type="text" placeholder="搜索工具... (如: MIPI、滤波、ESD)" />
+      <span id="search-count" style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);font-size:0.78rem;color:var(--muted);white-space:nowrap;pointer-events:none"></span>
     </div>
     <div class="tabs" id="tabs">
       <button class="tab active" data-cat="鍏ㄩ儴">鍏ㄩ儴</button>
@@ -675,26 +676,49 @@
     const tabBtns     = document.querySelectorAll('.tab');
     const emptyState  = document.getElementById('emptyState');
 
-    let activeCategory = '鍏ㄩ儴';
+    let activeCategory = '全部';
 
     function filterCards() {
       const q = searchInput.value.trim().toLowerCase();
       let visible = 0;
 
-      cards.forEach(card => {
-        const cat    = card.dataset.cat  || '';
-        const search = (card.dataset.search || '') + ' ' + (card.querySelector('.card-title')?.textContent || '');
+      // 搜索时自动切换到"全部"Tab
+      if (q && activeCategory !== '全部') {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        const allTab = [...tabBtns].find(b => b.dataset.cat === '全部');
+        if (allTab) allTab.classList.add('active');
+        activeCategory = '全部';
+      }
 
-        const matchCat    = activeCategory === '鍏ㄩ儴' || cat === activeCategory;
-        const matchSearch = !q || search.toLowerCase().includes(q);
+      cards.forEach(card => {
+        const cat        = card.dataset.cat  || '';
+        const searchData = (card.dataset.search || '').toLowerCase();
+        const title      = (card.querySelector('.card-title, h3')?.textContent || '').toLowerCase();
+        const desc       = (card.querySelector('.card-desc')?.textContent || '').toLowerCase();
+
+        const matchCat    = activeCategory === '全部' || cat === activeCategory;
+        const matchSearch = !q || searchData.includes(q) || title.includes(q) || desc.includes(q);
 
         if (matchCat && matchSearch) {
           card.style.display = '';
+          // 高亮匹配的卡片
+          if (q) {
+            card.style.borderColor = 'rgba(59,130,246,0.5)';
+          } else {
+            card.style.borderColor = '';
+          }
           visible++;
         } else {
           card.style.display = 'none';
+          card.style.borderColor = '';
         }
       });
+
+      // 更新结果计数
+      const countEl = document.getElementById('search-count');
+      if (countEl) {
+        countEl.textContent = q ? `找到 ${visible} 个工具` : '';
+      }
 
       emptyState.style.display = visible === 0 ? 'block' : 'none';
     }
@@ -709,6 +733,15 @@
     });
 
     searchInput.addEventListener('input', filterCards);
+
+    // ESC 键清空搜索
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        filterCards();
+        searchInput.blur();
+      }
+    });
   </script>
 
 </body>
