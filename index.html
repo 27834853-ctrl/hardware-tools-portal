@@ -21,8 +21,6 @@
     .header-inner { max-width: 1200px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; gap: .6rem; font-size: 1.2rem; font-weight: 700; color: var(--text); text-decoration: none; }
     .logo span { color: var(--blue); }
-    .gh-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1rem; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); text-decoration: none; font-size: .875rem; transition: border-color var(--transition), color var(--transition); }
-    .gh-btn:hover { border-color: var(--blue); color: var(--text); }
 
     .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse 80% 40% at 50% 0%, #1a2d5a40, transparent 70%); }
     .hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.2; margin-bottom: .75rem; }
@@ -62,7 +60,11 @@
     .card-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; flex: 1; }
     .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
     .tag { background: var(--tag-bg); color: var(--tag-text); font-size: .72rem; padding: .2rem .6rem; border-radius: 999px; font-weight: 500; }
-    .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
+    .card-.header-nav { display: flex; align-items: center; gap: .75rem; }
+    .nav-tag { font-size: .82rem; color: var(--muted); padding: .3rem .8rem; border: 1px solid var(--border); border-radius: 6px; }
+    .nav-version { font-size: .78rem; color: var(--blue); background: rgba(59,130,246,.15); padding: .3rem .7rem; border-radius: 6px; font-weight: 600; }
+
+    footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
     .card-category { font-size: .75rem; color: var(--muted); }
     .open-btn { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem 1rem; background: var(--blue); color: #fff; border-radius: 7px; text-decoration: none; font-size: .82rem; font-weight: 600; transition: background var(--transition), transform .15s; border: none; cursor: pointer; }
     .open-btn:hover { background: var(--blue-dark); transform: translateX(2px); }
@@ -92,9 +94,10 @@
       <span style="font-size:1.4rem">🔧</span>
       硬件工程师<span>工具箱</span>
     </a>
-    <a class="gh-btn" href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
-      <i class="fa-brands fa-github"></i> GitHub
-    </a>
+    <nav class="header-nav">
+      <span class="nav-tag">专业硬件设计工具集</span>
+      <span class="nav-version">v2.0</span>
+    </nav>
   </div>
 </header>
 
@@ -416,11 +419,8 @@
 </section>
 
 <footer>
-  <p>© 2026 硬件工程师工具箱 · 持续更新 &nbsp;·&nbsp;
-    <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
-      <i class="fa-brands fa-github"></i> GitHub
-    </a>
-  </p>
+  <p>© 2026 硬件工程师工具箱 &nbsp;·&nbsp; 专业硬件设计工具集 &nbsp;·&nbsp; 持续更新中</p>
+  <p style="margin-top:.4rem;font-size:.8rem;opacity:.6">涵盖电源设计 · 信号完整性 · PCB设计 · EMC · 热设计 · 项目管理</p>
 </footer>
 
 <script>
