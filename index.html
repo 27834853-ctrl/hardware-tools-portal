@@ -3,367 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>纭欢宸ョ▼甯堝伐鍏风</title>
+  <title>硬件工程师工具箱</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #0a0f1e;
-      --bg-card:   #111827;
-      --bg-card2:  #1a2236;
-      --border:    #1e2d45;
-      --blue:      #3b82f6;
-      --blue-glow: #3b82f655;
-      --blue-dark: #1d4ed8;
-      --text:      #f1f5f9;
-      --muted:     #94a3b8;
-      --tag-bg:    #1e3a5f;
-      --tag-text:  #93c5fd;
-      --radius:    12px;
-      --transition: 0.25s ease;
+      --bg: #0a0f1e; --bg-card: #111827; --border: #1e2d45;
+      --blue: #3b82f6; --blue-glow: #3b82f640; --blue-dark: #1d4ed8;
+      --text: #f1f5f9; --muted: #94a3b8;
+      --tag-bg: #1e3a5f; --tag-text: #93c5fd;
+      --radius: 12px; --transition: 0.25s ease;
     }
-
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; line-height: 1.6; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    /* 鈹€鈹€ HEADER 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    header {
-      background: linear-gradient(135deg, #0d1526 0%, #0a0f1e 60%);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .logo-icon {
-      font-size: 1.4rem;
-    }
+    header { background: linear-gradient(135deg,#0d1526,#0a0f1e); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+    .header-inner { max-width: 1200px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: .6rem; font-size: 1.2rem; font-weight: 700; color: var(--text); text-decoration: none; }
     .logo span { color: var(--blue); }
-
-    .gh-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 1rem;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: border-color var(--transition), color var(--transition);
-      white-space: nowrap;
-    }
+    .gh-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1rem; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); text-decoration: none; font-size: .875rem; transition: border-color var(--transition), color var(--transition); }
     .gh-btn:hover { border-color: var(--blue); color: var(--text); }
 
-    /* 鈹€鈹€ HERO 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem 2.5rem;
-      background: radial-gradient(ellipse 80% 40% at 50% 0%, #1a2d5a44 0%, transparent 70%);
-    }
-    .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-    }
+    .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse 80% 40% at 50% 0%, #1a2d5a40, transparent 70%); }
+    .hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.2; margin-bottom: .75rem; }
     .hero h1 .accent { color: var(--blue); }
-    .hero p {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 540px;
-      margin: 0 auto;
-    }
+    .hero p { color: var(--muted); max-width: 540px; margin: 0 auto; }
 
-    /* 鈹€鈹€ STATS 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .stats {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 2rem 2rem 0;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.2rem 2rem;
-      text-align: center;
-      flex: 1;
-      min-width: 140px;
-    }
-    .stat-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
+    .stats { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; padding: 2rem 2rem 0; max-width: 700px; margin: 0 auto; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 2rem; text-align: center; flex: 1; min-width: 120px; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); line-height: 1; }
+    .stat-label { font-size: .8rem; color: var(--muted); margin-top: .25rem; }
 
-    /* 鈹€鈹€ FILTER BAR 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .filter-bar {
-      max-width: 1200px;
-      margin: 2.5rem auto 0;
-      padding: 0 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-    }
-    .search-wrap {
-      position: relative;
-      flex: 1;
-      min-width: 220px;
-    }
-    .search-wrap i {
-      position: absolute;
-      left: 0.9rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-    .search-input {
-      width: 100%;
-      padding: 0.65rem 7rem 0.65rem 2.4rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color var(--transition);
-    }
+    .filter-bar { max-width: 1200px; margin: 2.5rem auto 0; padding: 0 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .search-wrap { position: relative; flex: 1; min-width: 220px; }
+    .search-wrap i { position: absolute; left: .9rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .85rem; }
+    .search-input { width: 100%; padding: .65rem 1rem .65rem 2.4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .9rem; outline: none; transition: border-color var(--transition); }
     .search-input::placeholder { color: var(--muted); }
     .search-input:focus { border-color: var(--blue); }
 
-    .tabs {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .tab {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
+    .tabs { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .tab { padding: .5rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: .85rem; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
     .tab:hover { border-color: var(--blue); color: var(--text); }
-    .tab.active {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-      font-weight: 600;
-    }
+    .tab.active { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 600; }
 
-    /* 鈹€鈹€ GRID 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .grid-section {
-      max-width: 1200px;
-      margin: 2rem auto 4rem;
-      padding: 0 2rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+    .grid-section { max-width: 1200px; margin: 2rem auto 4rem; padding: 0 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    @media(max-width:900px){ .grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:580px){ .grid { grid-template-columns: 1fr; } }
 
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem 1.5rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease,
-                  border-color var(--transition), box-shadow var(--transition);
-    }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: .85rem; position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity .4s ease, transform .4s ease, border-color var(--transition), box-shadow var(--transition); }
     .card.visible { opacity: 1; transform: translateY(0); }
-    .card:not(.active):hover {
-      border-color: var(--blue);
-      box-shadow: 0 0 24px var(--blue-glow), 0 8px 24px #0006;
-      transform: translateY(-6px);
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .card:not(.active):hover::before { opacity: 1; }
+    .card:not(.soon):hover { border-color: var(--blue); box-shadow: 0 0 24px var(--blue-glow), 0 8px 24px #0006; transform: translateY(-6px); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,var(--blue),transparent); opacity: 0; transition: opacity var(--transition); }
+    .card:not(.soon):hover::before { opacity: 1; }
 
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, #1e3a5f, #1a2d55);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: var(--blue);
-      flex-shrink: 0;
-    }
-    .card-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .card-desc {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 0.72rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      font-weight: 500;
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
-      margin-top: auto;
-    }
-    .card-category {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    .open-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 1rem;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 7px;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      transition: background var(--transition), transform 0.15s ease;
-      border: none;
-      cursor: pointer;
-    }
+    .card-icon { width: 52px; height: 52px; background: linear-gradient(135deg,#1e3a5f,#1a2d55); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--blue); flex-shrink: 0; }
+    .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+    .card-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag { background: var(--tag-bg); color: var(--tag-text); font-size: .72rem; padding: .2rem .6rem; border-radius: 999px; font-weight: 500; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
+    .card-category { font-size: .75rem; color: var(--muted); }
+    .open-btn { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem 1rem; background: var(--blue); color: #fff; border-radius: 7px; text-decoration: none; font-size: .82rem; font-weight: 600; transition: background var(--transition), transform .15s; border: none; cursor: pointer; }
     .open-btn:hover { background: var(--blue-dark); transform: translateX(2px); }
-    .open-btn:disabled {
-      background: #2a3650;
-      color: var(--muted);
-      cursor: not-allowed;
-      transform: none;
-    }
+    .open-btn:disabled { background: #2a3650; color: var(--muted); cursor: not-allowed; transform: none; }
 
-    /* 鈹€鈹€ COMING SOON 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .active-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #f59e0b;
-      color: #0a0f1e;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .card.active {
-      opacity: 0.65 !important;
-    }
-    .card.active::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(10,15,30,0.35);
-      pointer-events: none;
-    }
+    .soon-badge { position: absolute; top: 1rem; right: 1rem; background: #f59e0b; color: #0a0f1e; font-size: .7rem; font-weight: 700; padding: .2rem .65rem; border-radius: 999px; text-transform: uppercase; }
+    .card.soon { opacity: .6; }
 
-    /* 鈹€鈹€ EMPTY STATE 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 4rem 2rem;
-      color: var(--muted);
-      display: none;
-    }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 4rem 2rem; color: var(--muted); display: none; }
     .empty-state i { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-    .empty-state p { font-size: 1rem; }
 
-    /* 鈹€鈹€ FOOTER 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: .85rem; }
     footer a { color: var(--blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* 鈹€鈹€ SCROLLBAR 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -372,408 +86,383 @@
 </head>
 <body>
 
-  <!-- 鈹€鈹€ HEADER 鈹€鈹€ -->
-  <header>
-    <div class="header-inner">
-      <a class="logo" href="#">
-        <span class="logo-icon">馃敡</span>
-        纭欢宸ョ▼甯?span>宸ュ叿绠?/span>
-      </a>
-      <a class="gh-btn" href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
-        <i class="fa-brands fa-github"></i> GitHub
-      </a>
-    </div>
-  </header>
-
-  <!-- 鈹€鈹€ HERO 鈹€鈹€ -->
-  <section class="hero">
-    <h1>涓撲笟纭欢璁捐宸ュ叿闆?br/><span class="accent">涓€绔欏紡宸ョ▼甯堝伐鍏风</span></h1>
-    <p>涓撲负宓屽叆寮忎笌纭欢宸ョ▼甯堣璁＄殑鍦ㄧ嚎宸ュ叿闆?路 鎸佺画鏇存柊</p>
-  </section>
-
-  <!-- 鈹€鈹€ STATS 鈹€鈹€ -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-num">7</div>
-      <div class="stat-label">宸ュ叿鎬绘暟</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">6</div>
-      <div class="stat-label">鍦ㄧ嚎鍙敤</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">1</div>
-      <div class="stat-label">鍗冲皢鎺ㄥ嚭</div>
-    </div>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <span style="font-size:1.4rem">🔧</span>
+      硬件工程师<span>工具箱</span>
+    </a>
+    <a class="gh-btn" href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
   </div>
+</header>
 
-  <!-- 鈹€鈹€ FILTER BAR 鈹€鈹€ -->
-  <div class="filter-bar">
-    <div class="search-wrap">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input class="search-input" id="searchInput" type="text" placeholder="搜索工具... (如: MIPI、滤波、ESD)" />
-      <span id="search-count" style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);font-size:0.78rem;color:var(--muted);white-space:nowrap;pointer-events:none"></span>
-    </div>
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-cat="鍏ㄩ儴">鍏ㄩ儴</button>
-      <button class="tab" data-cat="鐢垫簮璁捐">鐢垫簮璁捐</button>
-      <button class="tab" data-cat="淇″彿瀹屾暣鎬?>淇″彿瀹屾暣鎬?/button>
-      <button class="tab" data-cat="鎽勫儚澶?>鎽勫儚澶?/button>
-      <button class="tab" data-cat="鐭ヨ瘑搴?>鐭ヨ瘑搴?/button>
-      <button class="tab" data-cat="宸ュ叿">宸ュ叿</button>
-    </div>
+<section class="hero">
+  <h1>专业硬件设计工具集<br/><span class="accent">一站式工程师工具箱</span></h1>
+  <p>专为嵌入式与硬件工程师设计的在线工具 · 持续更新</p>
+</section>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">工具总数</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-online">0</div><div class="stat-label">在线可用</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-soon">0</div><div class="stat-label">即将上线</div></div>
+</div>
+
+<div class="filter-bar">
+  <div class="search-wrap">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input class="search-input" id="searchInput" type="text" placeholder="搜索工具... (如: MIPI、滤波、ESD)" />
   </div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-cat="全部">全部</button>
+    <button class="tab" data-cat="电源设计">电源设计</button>
+    <button class="tab" data-cat="信号完整性">信号完整性</button>
+    <button class="tab" data-cat="PCB">PCB</button>
+    <button class="tab" data-cat="摄像头">摄像头</button>
+    <button class="tab" data-cat="工具">工具</button>
+    <button class="tab" data-cat="知识库">知识库</button>
+  </div>
+</div>
 
-  <!-- 鈹€鈹€ GRID 鈹€鈹€ -->
-  <section class="grid-section">
-    <div class="grid" id="grid">
+<section class="grid-section">
+  <div class="grid" id="grid">
 
-      <!-- Card 1: DCDC Buck -->
-      <div class="card" data-cat="鐢垫簮璁捐" data-search="dcdc buck 璁捐涓績 鐢垫簮璁捐 鐜矾琛ュ伩 鐑垎鏋?鍙傛暟璁＄畻 鏁堢巼棰勬祴 绾规尝鍒嗘瀽 鐬€佸搷搴?>
-        <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-        <div class="card-title">DCDC Buck 璁捐涓績</div>
-        <div class="card-desc">瀹屾暣 Buck 璁捐娴佺▼宸ュ叿锛屽惈鍙傛暟璁＄畻銆佺幆璺ˉ鍋裤€佺儹璁捐銆佹晥鐜囬娴嬨€佺汗娉㈠垎鏋愩€佺灛鎬佸搷搴斻€?/div>
-        <div class="card-tags">
-          <span class="tag">鐢垫簮璁捐</span>
-          <span class="tag">DCDC</span>
-          <span class="tag">鐜矾琛ュ伩</span>
-          <span class="tag">鐑垎鏋?/span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐢垫簮璁捐</span>
-          <a class="open-btn" href="https://dcdc-buck-design.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+    <!-- 1. DCDC Buck -->
+    <div class="card" data-cat="电源设计" data-search="dcdc buck 设计 电源 环路补偿 热分析 参数计算 效率 纹波 瞬态">
+      <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+      <div class="card-title">DCDC Buck 设计中心</div>
+      <div class="card-desc">完整 Buck 设计流程：参数计算、环路补偿、热设计、效率预测、纹波分析、瞬态响应。</div>
+      <div class="card-tags"><span class="tag">DCDC</span><span class="tag">电源</span><span class="tag">环路补偿</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://dcdc-buck-design.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-
-      <!-- Card 2: 鍘熺悊鍥捐嚜鍔ㄦ鏌ュ櫒 -->
-      <div class="card" data-cat="宸ュ叿" data-search="鍘熺悊鍥?鑷姩妫€鏌ュ櫒 erc 鐢靛杩囧帇 鍗曠綉缁滄偓绌?i2c 鍐茬獊 pull-up 杩濊 璇箟绾?>
-        <div class="card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class="card-title">鍘熺悊鍥捐嚜鍔ㄦ鏌ュ櫒</div>
-        <div class="card-desc">璇箟绾у師鐞嗗浘妫€鏌ワ紝璇嗗埆鐢靛杩囧帇銆佸崟缃戠粶鎮┖銆両2C 鍐茬獊銆丳ull-up 杩濊銆?/div>
-        <div class="card-tags">
-          <span class="tag">鍘熺悊鍥?/span>
-          <span class="tag">ERC</span>
-          <span class="tag">鑷姩妫€鏌?/span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>宸ュ叿</span>
-          <a class="open-btn" href="https://schematic-auto-checker.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Card 3: 鐢垫簮鏃跺簭妫€鏌ュ櫒 -->
-      <div class="card" data-cat="鐢垫簮璁捐" data-search="鐢垫簮鏃跺簭 妫€鏌ュ櫒 pdn qualcomm 涓婄數椤哄簭 鏃跺簭杩濊 寰幆渚濊禆">
-        <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
-        <div class="card-title">鐢垫簮鏃跺簭妫€鏌ュ櫒</div>
-        <div class="card-desc">瀹氫箟涓婄數椤哄簭锛屾娴嬫椂搴忚繚瑙勫拰寰幆渚濊禆锛屾敮鎸?Qualcomm PDN 瑙勮寖銆?/div>
-        <div class="card-tags">
-          <span class="tag">鐢垫簮鏃跺簭</span>
-          <span class="tag">PDN</span>
-          <span class="tag">Qualcomm</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐢垫簮璁捐</span>
-          <a class="open-btn" href="https://power-sequence-checker.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Card 4: MIPI 甯﹀璁＄畻鍣?-->
-      <div class="card" data-cat="鎽勫儚澶? data-search="mipi 甯﹀ 璁＄畻鍣?d-phy c-phy camera 鎽勫儚澶?楂橀€?soc 澶氳矾">
-        <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
-        <div class="card-title">MIPI 甯﹀璁＄畻鍣?/div>
-        <div class="card-desc">D-PHY / C-PHY 甯﹀璁＄畻锛屾敮鎸佸璺憚鍍忓ご鑱氬悎锛屽唴缃珮閫?SoC 甯﹀瑙勬牸銆?/div>
-        <div class="card-tags">
-          <span class="tag">MIPI</span>
-          <span class="tag">Camera</span>
-          <span class="tag">D-PHY</span>
-          <span class="tag">C-PHY</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鎽勫儚澶?/span>
-          <a class="open-btn" href="https://mipi-bandwidth-calculator.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Card 5: PCB 鍙犲眰闃绘姉璁＄畻鍣?(coming soon) -->
-      <!-- url: https://pcb-stackup-calculator.vercel.app/ -->
-      <div class="card active" data-cat="淇″彿瀹屾暣鎬? data-search="pcb 鍙犲眰 闃绘姉 璁＄畻鍣?寰甫绾?甯︾姸绾?宸垎闃绘姉 usb pcie si">
-        <div class="active-badge">鍗冲皢涓婄嚎</div>
-        <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
-        <div class="card-title">PCB 鍙犲眰闃绘姉璁＄畻鍣?/div>
-        <div class="card-desc">寰甫绾?甯︾姸绾跨壒寰侀樆鎶楄绠楋紝MIPI/USB/PCIe 宸垎闃绘姉鏍￠獙锛屽搴﹀弽绠椼€?/div>
-        <div class="card-tags">
-          <span class="tag">PCB</span>
-          <span class="tag">闃绘姉</span>
-          <span class="tag">鍙犲眰</span>
-          <span class="tag">SI</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>淇″彿瀹屾暣鎬?/span>
-          <button class="open-btn" disabled>鍗冲皢涓婄嚎 <i class="fa-solid fa-clock"></i></button>
-        </div>
-      </div>
-
-      <!-- Card 6: 鐢垫満椹卞姩璁捐鎸囧崡 -->
-      <div class="card" data-cat="鐭ヨ瘑搴? data-search="鐢垫満 椹卞姩 璁捐鎸囧崡 鏈哄櫒浜?鍔熺巼绾?鏍呮瀬椹卞姩 淇濇姢鐢佃矾 hardware">
-        <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
-        <div class="card-title">鐢垫満椹卞姩璁捐鎸囧崡</div>
-        <div class="card-desc">鏈哄櫒浜虹數鏈洪┍鍔ㄧ‖浠惰璁＄煡璇嗗簱锛屾兜鐩栧姛鐜囩骇銆佹爡鏋侀┍鍔ㄣ€佷繚鎶ょ數璺€?/div>
-        <div class="card-tags">
-          <span class="tag">鐢垫満</span>
-          <span class="tag">椹卞姩</span>
-          <span class="tag">鏈哄櫒浜?/span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鐭ヨ瘑搴?/span>
-          <a class="open-btn" href="https://motor-drive-guide.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Card 7: Camera 寮€鍙戞寚鍗?-->
-      <div class="card" data-cat="鎽勫儚澶? data-search="camera 寮€鍙戞寚鍗?mipi isp vcm 纭欢寮€鍙?鍏ㄦ祦绋?>
-        <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
-        <div class="card-title">Camera 寮€鍙戞寚鍗?/div>
-        <div class="card-desc">Camera 纭欢寮€鍙戝叏娴佺▼鐭ヨ瘑搴擄紝瑕嗙洊 MIPI銆両SP銆乂CM 绛夈€?/div>
-        <div class="card-tags">
-          <span class="tag">Camera</span>
-          <span class="tag">MIPI</span>
-          <span class="tag">ISP</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>鎽勫儚澶?/span>
-          <a class="open-btn" href="https://camera-dev-guide.vercel.app/" target="_blank" rel="noopener">鎵撳紑宸ュ叿 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Empty state -->
-      <div class="empty-state" id="emptyState">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <p>娌℃湁鎵惧埌鍖归厤鐨勫伐鍏凤紝璇曡瘯鍏朵粬鍏抽敭璇嶏紵</p>
-      </div>
-
     </div>
-  
-      <!-- url: https://crystal-oscillator-tool.vercel.app/ -->
-      <div class="card active" data-cat="时钟设计" data-search="晶振 时钟 crystal oscillator 负载电容 起振裕量 PPM 精度 19.2MHz 24MHz 驱动电阻 CQ8750 IMX906">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-wave-square"></i></div>
-          <div class="card-meta">
-            <h3>晶振/时钟设计计算器</h3>
-            <span class="tag">时钟设计</span>
-          </div>
-        </div>
-        <p class="card-desc">负载电容选型、驱动电阻、全温 PPM 精度预算、起振裕量分析。内置 CQ8750S/IMX906/AIC8800 参考参数，含 20 款晶振选型速查表。</p>
-        <div class="card-footer">
-          <a href="https://crystal-oscillator-tool.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+
+    <!-- 2. DCDC 反馈计算 -->
+    <div class="card" data-cat="电源设计" data-search="dcdc 反馈 feedback 分压 电阻 Vout 基准电压 计算">
+      <div class="card-icon"><i class="fa-solid fa-sliders"></i></div>
+      <div class="card-title">DCDC 反馈电阻计算器</div>
+      <div class="card-desc">DCDC 转换器输出电压反馈网络计算，支持多种拓扑和基准电压配置。</div>
+      <div class="card-tags"><span class="tag">DCDC</span><span class="tag">反馈</span><span class="tag">电阻</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://dcdc_feedback_calculator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://decoupling-cap-designer.vercel.app/ -->
-      <div class="card active" data-cat="电源设计" data-search="去耦电容 PDN 目标阻抗 ESL ESR 谐振 并联优化 Qualcomm VDD 滤波 decoupling bypass cap MLCC">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-microchip"></i></div>
-          <div class="card-meta">
-            <h3>去耦电容 PDN 设计工具</h3>
-            <span class="tag">电源设计</span>
-          </div>
-        </div>
-        <p class="card-desc">目标阻抗计算、单电容阻抗曲线（含 ESL/ESR 谐振）、多电容并联优化、PCB 封装 ESL 估算。内置 Qualcomm CQ8750S CPU/DDR/IO 去耦参考方案。</p>
-        <div class="card-footer">
-          <a href="https://decoupling-cap-designer.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 3. 电源时序检查器 -->
+    <div class="card" data-cat="电源设计" data-search="电源时序 检查 PDN qualcomm 上电顺序 时序违规 循环依赖">
+      <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <div class="card-title">电源时序检查器</div>
+      <div class="card-desc">定义上电顺序，检测时序违规和循环依赖，支持 Qualcomm PDN 规范校验。</div>
+      <div class="card-tags"><span class="tag">PDN</span><span class="tag">时序</span><span class="tag">Qualcomm</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://power-sequence-checker.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://fpc-si-tool.vercel.app/ -->
-      <div class="card active" data-cat="信号完整性" data-search="FPC 连接器 阻抗 等长 skew 差分 MIPI CSI-2 Pin映射 Face-to-Back P/N 极性反转 DF56C 时序">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-ethernet"></i></div>
-          <div class="card-meta">
-            <h3>FPC 连接器信号完整性工具</h3>
-            <span class="tag">信号完整性</span>
-          </div>
-        </div>
-        <p class="card-desc">FPC 走线阻抗（PI基材/覆盖膜/带状线）、差分对等长匹配、连接器 Pin 映射检查（Face-to-Back P/N 反转告警）、MIPI CSI-2 时序裕量分析。内置 DF56C-26S-0.3V 预设。</p>
-        <div class="card-footer">
-          <a href="https://fpc-si-tool.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 4. 去耦电容设计 -->
+    <div class="card" data-cat="电源设计" data-search="去耦 电容 PDN 目标阻抗 ESL ESR 谐振 优化 Qualcomm VDD MLCC bypass decoupling">
+      <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+      <div class="card-title">去耦电容 PDN 设计工具</div>
+      <div class="card-desc">目标阻抗计算、多电容阻抗曲线（含 ESL/ESR 谐振）、PCB 封装 ESL 估算，支持 Qualcomm 去耦参考规则。</div>
+      <div class="card-tags"><span class="tag">PDN</span><span class="tag">去耦</span><span class="tag">MLCC</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://decoupling-cap-designer.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://thermal-design.vercel.app/ -->
-      <div class="card active" data-cat="热设计" data-search="热设计 热阻 结温 Tj 散热 温升 thermal resistance junction temperature PCB copper">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-temperature-high"></i></div>
-          <div class="card-meta">
-            <h3>热设计计算工具</h3>
-            <span class="tag">热设计</span>
-          </div>
-        </div>
-        <p class="card-desc">结温 Tj 计算、热阻分析（θja/θjc/θjb）、散热片选型、PCB 铜皮散热面积估算。支持多芯片热叠加分析。</p>
-        <div class="card-footer">
-          <a href="https://thermal-design.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 5. 电池充电器 -->
+    <div class="card" data-cat="电源设计" data-search="电池 充电器 CC CV BMS 保护 LiFePO4 OVP OCP R_sense Peukert">
+      <div class="card-icon"><i class="fa-solid fa-battery-three-quarters"></i></div>
+      <div class="card-title">电池充电器设计工具</div>
+      <div class="card-desc">CC/CV 参数计算、BMS 保护配置（OVP/UVP/OCP/R_sense）、Peukert 容量估算、充电 IC 快速查询。</div>
+      <div class="card-tags"><span class="tag">电池</span><span class="tag">充电</span><span class="tag">BMS</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://battery-charger-designer.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://pcb-trace-calculator.vercel.app/ -->
-      <div class="card active" data-cat="PCB" data-search="PCB走线 线宽 载流 IPC-2221 阻抗 铜皮 温升 trace width current capacity impedance">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-ruler-combined"></i></div>
-          <div class="card-meta">
-            <h3>PCB 走线设计计算器</h3>
-            <span class="tag">PCB</span>
-          </div>
-        </div>
-        <p class="card-desc">IPC-2221 线宽载流计算、走线温升分析、阻抗反算、三方联算（阻抗+载流+工艺约束）、铜皮方块电阻。</p>
-        <div class="card-footer">
-          <a href="https://pcb-trace-calculator.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 6. 热设计 -->
+    <div class="card" data-cat="电源设计" data-search="热设计 热阻 Tj 结温 散热 铜皮 thermal resistance junction temperature PCB copper">
+      <div class="card-icon"><i class="fa-solid fa-temperature-high"></i></div>
+      <div class="card-title">热设计计算工具</div>
+      <div class="card-desc">结温 Tj 计算、热阻网络分析（θja/θjc/θjb）、散热片选型、PCB 铜皮散热面积估算。支持多芯片热叠加。</div>
+      <div class="card-tags"><span class="tag">热设计</span><span class="tag">热阻</span><span class="tag">散热</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>电源设计</span>
+        <a class="open-btn" href="https://thermal_design.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://esd-tvs-designer.vercel.app/ -->
-      <div class="card active" data-cat="信号完整性" data-search="ESD TVS 静电防护 IEC 61000-4-2 钳位电压 Cj 结电容 USB HDMI MIPI PCIe 保护">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-          <div class="card-meta">
-            <h3>ESD / TVS 选型计算器</h3>
-            <span class="tag">信号完整性</span>
-          </div>
-        </div>
-        <p class="card-desc">IEC 61000-4-2 ESD保护等级分析、TVS选型（PPP/钳位电压）、Cj对高速信号的插入损耗影响、常用保护器件速查。</p>
-        <div class="card-footer">
-          <a href="https://esd-tvs-designer.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 7. MIPI 带宽计算器 -->
+    <div class="card" data-cat="摄像头" data-search="MIPI 带宽 计算 D-PHY C-PHY camera 摄像头 高通 SoC 多路">
+      <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+      <div class="card-title">MIPI 带宽计算器</div>
+      <div class="card-desc">D-PHY / C-PHY 带宽计算，支持多路摄像头聚合，内置高通 SoC 带宽规格数据库。</div>
+      <div class="card-tags"><span class="tag">MIPI</span><span class="tag">Camera</span><span class="tag">D-PHY</span><span class="tag">C-PHY</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>摄像头</span>
+        <a class="open-btn" href="https://mipi-bandwidth-calculator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://filter-designer.vercel.app/ -->
-      <div class="card active" data-cat="模拟" data-search="滤波器 RC LC 有源 EMI Bode Butterworth Bessel Chebyshev Sallen-Key 匹配网络">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-wave-square"></i></div>
-          <div class="card-meta">
-            <h3>滤波器设计计算器</h3>
-            <span class="tag">模拟</span>
-          </div>
-        </div>
-        <p class="card-desc">RC/LC/有源滤波器设计，电源EMI π型滤波，π/T型阻抗匹配网络，E24标准值反算，Bode图可视化。</p>
-        <div class="card-footer">
-          <a href="https://filter-designer.vercel.app/" target="_blank" class="btn-open">打开工具 →</a>
-        </div>
+    </div>
+
+    <!-- 8. FPC SI 工具 -->
+    <div class="card" data-cat="信号完整性" data-search="FPC 阻抗 电阻 等长 skew MIPI CSI-2 Pin映射 Face-to-Back P/N 差分反转 DF56C 时序">
+      <div class="card-icon"><i class="fa-solid fa-ethernet"></i></div>
+      <div class="card-title">FPC 信号完整性工具</div>
+      <div class="card-desc">FPC 线阻计算（PI/覆盖膜/截面）、差分对等长匹配、MIPI Pin 映射检查（Face-to-Back P/N 反转告警）、DF56C-26S-0.3V 预检。</div>
+      <div class="card-tags"><span class="tag">FPC</span><span class="tag">MIPI</span><span class="tag">SI</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
+        <a class="open-btn" href="https://fpc-si-tool.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      
-      <!-- url: https://battery-charger-designer.vercel.app/ -->
-      <div class="card active" data-cat="电源" data-search="电池 充电 CC CV BMS 保护 续航 串并联 锂离子 LiFePO4 Peukert OVP OCP R_sense">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-battery-three-quarters"></i></div>
-          <div class="card-meta"><h3>电池充电设计计算器</h3><span class="tag">电源</span></div>
-        </div>
-        <p class="card-desc">CC/CV充电曲线，BMS保护参数(OVP/UVP/OCP/R_sense)，Peukert续航估算，串并联电池组，充电IC速查表。</p>
-        <div class="card-footer"><a href="https://battery-charger-designer.vercel.app/" target="_blank" class="btn-open">打开工具 →</a></div>
+    </div>
+
+    <!-- 9. SI 损耗计算 -->
+    <div class="card" data-cat="信号完整性" data-search="SI 损耗 loss 插损 回损 S参数 高速 传输线 信号完整性 频率">
+      <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="card-title">SI 损耗计算器</div>
+      <div class="card-desc">高速信号传输线损耗分析，包含插入损耗、回波损耗计算，辅助高速接口设计验证。</div>
+      <div class="card-tags"><span class="tag">SI</span><span class="tag">损耗</span><span class="tag">高速</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
+        <a class="open-btn" href="https://si-loss-calculator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
+    </div>
 
-      <!-- url: https://hdi-via-designer.vercel.app/ -->
-      <div class="card active" data-cat="PCB" data-search="HDI 埋孔 盲孔 BGA 扇出 微孔 背钻 纵横比 AR μVia ELIC 激光钻孔">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-layer-group"></i></div>
-          <div class="card-meta"><h3>HDI 埋盲孔设计工具</h3><span class="tag">PCB</span></div>
-        </div>
-        <p class="card-desc">BGA扇出密度分析（CQ8750S预设），μVia纵横比AR检查(IPC-6012)，HDI叠层方案选择，背钻stub谐振计算。</p>
-        <div class="card-footer"><a href="https://hdi-via-designer.vercel.app/" target="_blank" class="btn-open">打开工具 →</a></div>
+    <!-- 10. ESD/TVS -->
+    <div class="card" data-cat="信号完整性" data-search="ESD TVS 保护器件 IEC 61000-4-2 钳位电压 Cj 结电容 USB HDMI MIPI PCIe 防护">
+      <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="card-title">ESD / TVS 选型工具</div>
+      <div class="card-desc">IEC 61000-4-2 ESD 防护等级评估、TVS 选型（PPP/钳位电压分析）、结电容对信号的带宽影响评估。</div>
+      <div class="card-tags"><span class="tag">ESD</span><span class="tag">TVS</span><span class="tag">防护</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
+        <a class="open-btn" href="https://esd-tvs-designer.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
+    </div>
 
-      <!-- url: https://level-shift-calculator.vercel.app/ -->
-      <div class="card active" data-cat="数字" data-search="电平转换 level shift LVCMOS LVTTL LVDS VOH VIH 兼容性 TXS0108 PCA9306 SPMI I2C SPI JTAG SWD">
-        <div class="card-header">
-          <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
-          <div class="card-meta"><h3>接口电平兼容性计算器</h3><span class="tag">数字</span></div>
-        </div>
-        <p class="card-desc">LVCMOS/LVTTL/LVDS电平兼容性判断（直连/限流/转换IC），电平转换IC选型速查，UART/I2C/SPI/SPMI/eMMC接口电平速查表。</p>
-        <div class="card-footer"><a href="https://level-shift-calculator.vercel.app/" target="_blank" class="btn-open">打开工具 →</a></div>
+    <!-- 11. 滤波器设计 -->
+    <div class="card" data-cat="信号完整性" data-search="滤波器 RC LC 电源 EMI Bode Butterworth Bessel Chebyshev Sallen-Key 匹配网络">
+      <div class="card-icon"><i class="fa-solid fa-wave-square"></i></div>
+      <div class="card-title">滤波器设计工具</div>
+      <div class="card-desc">RC/LC/有源滤波器设计；EMI 滤波器 π/T 型阻抗匹配；E24 标准值计算；Bode 图可视化。</div>
+      <div class="card-tags"><span class="tag">滤波器</span><span class="tag">EMI</span><span class="tag">Bode</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>信号完整性</span>
+        <a class="open-btn" href="https://filter-designer.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      </section>
+    </div>
 
-  <!-- 鈹€鈹€ FOOTER 鈹€鈹€ -->
-  <footer>
-    <p>漏 2026 纭欢宸ョ▼甯堝伐鍏风 路 鎸佺画鏇存柊涓?&nbsp;路&nbsp; <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></p>
-  </footer>
+    <!-- 12. PCB 叠层阻抗（即将上线） -->
+    <div class="card soon" data-cat="PCB" data-search="PCB 叠层 阻抗 计算 微带线 带状线 差分阻抗 USB PCIe SI">
+      <div class="soon-badge">即将上线</div>
+      <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <div class="card-title">PCB 叠层阻抗计算器</div>
+      <div class="card-desc">微带线/带状线特征阻抗计算，MIPI/USB/PCIe 差分阻抗校验，宽度反算。</div>
+      <div class="card-tags"><span class="tag">PCB</span><span class="tag">阻抗</span><span class="tag">叠层</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>PCB</span>
+        <button class="open-btn" disabled>即将上线 <i class="fa-solid fa-clock"></i></button>
+      </div>
+    </div>
 
-  <script>
-    // 鈹€鈹€ Stagger fade-in 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, i) => {
-      setTimeout(() => card.classList.add('visible'), 80 + i * 80);
-    });
+    <!-- 13. PCB 走线计算 -->
+    <div class="card" data-cat="PCB" data-search="PCB 走线 宽度 载流 IPC-2221 铜厚 阻抗 trace width current capacity">
+      <div class="card-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+      <div class="card-title">PCB 走线设计计算器</div>
+      <div class="card-desc">IPC-2221 宽度载流量计算、温升预测、走线阻抗估算、铜厚换算。</div>
+      <div class="card-tags"><span class="tag">PCB</span><span class="tag">走线</span><span class="tag">IPC-2221</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>PCB</span>
+        <a class="open-btn" href="https://pcb-trace-calculator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-    // 鈹€鈹€ Filter logic 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-    const searchInput = document.getElementById('searchInput');
-    const tabBtns     = document.querySelectorAll('.tab');
-    const emptyState  = document.getElementById('emptyState');
+    <!-- 14. HDI Via 设计 -->
+    <div class="card" data-cat="PCB" data-search="HDI 过孔 盲孔 BGA 等长 微孔 叠孔 填孔 AR 高密度 ELIC 多阶">
+      <div class="card-icon"><i class="fa-solid fa-circle-dot"></i></div>
+      <div class="card-title">HDI 过孔设计工具</div>
+      <div class="card-desc">BGA 密度分析（CQ8750S 预检）、叠孔填孔 AR 校验（IPC-6012）、HDI 布线方案选择，stub 谐振估算。</div>
+      <div class="card-tags"><span class="tag">HDI</span><span class="tag">过孔</span><span class="tag">BGA</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>PCB</span>
+        <a class="open-btn" href="https://hdi-via-designer.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-    let activeCategory = '全部';
+    <!-- 15. 晶振/时钟 -->
+    <div class="card" data-cat="工具" data-search="晶振 时钟 crystal oscillator 寄生电容 负载 PPM 频差 19.2MHz 24MHz CQ8750 IMX906">
+      <div class="card-icon"><i class="fa-solid fa-stopwatch"></i></div>
+      <div class="card-title">晶振/时钟设计工具</div>
+      <div class="card-desc">晶振选型、负载电容计算、全温 PPM 频差预估、振荡余量分析；内置 CQ8750S/IMX906/AIC8800 参考数据，20 款常用晶振快速查询。</div>
+      <div class="card-tags"><span class="tag">晶振</span><span class="tag">时钟</span><span class="tag">PPM</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
+        <a class="open-btn" href="https://crystal-oscillator-tool.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-    function filterCards() {
-      const q = searchInput.value.trim().toLowerCase();
-      let visible = 0;
+    <!-- 16. 电平转换 -->
+    <div class="card" data-cat="工具" data-search="电平转换 level shift LVCMOS LVTTL LVDS VOH VIH 兼容 TXS0108 PCA9306 SPMI I2C SPI JTAG">
+      <div class="card-icon"><i class="fa-solid fa-right-left"></i></div>
+      <div class="card-title">接口电平兼容性工具</div>
+      <div class="card-desc">LVCMOS/LVTTL/LVDS 电平兼容判断、直驱/上拉/转换 IC 策略推荐、电平转换 IC 选型快查，UART/I2C/SPI/SPMI/eMMC 接口电平速查。</div>
+      <div class="card-tags"><span class="tag">电平转换</span><span class="tag">I2C</span><span class="tag">SPI</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
+        <a class="open-btn" href="https://level-shift-calculator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-      // 搜索时自动切换到"全部"Tab
-      if (q && activeCategory !== '全部') {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        const allTab = [...tabBtns].find(b => b.dataset.cat === '全部');
-        if (allTab) allTab.classList.add('active');
-        activeCategory = '全部';
-      }
+    <!-- 17. 物料编码生成 -->
+    <div class="card" data-cat="工具" data-search="物料 编码 料号 BOM 生成 物料管理 MPN 器件编码">
+      <div class="card-icon"><i class="fa-solid fa-barcode"></i></div>
+      <div class="card-title">物料编码生成器</div>
+      <div class="card-desc">硬件物料编码规则生成与管理工具，规范 BOM 料号体系，提升物料管理效率。</div>
+      <div class="card-tags"><span class="tag">BOM</span><span class="tag">物料</span><span class="tag">编码</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
+        <a class="open-btn" href="https://material_code_generator.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-      cards.forEach(card => {
-        const cat        = card.dataset.cat  || '';
-        const searchData = (card.dataset.search || '').toLowerCase();
-        const title      = (card.querySelector('.card-title, h3')?.textContent || '').toLowerCase();
-        const desc       = (card.querySelector('.card-desc')?.textContent || '').toLowerCase();
+    <!-- 18. 原理图检查 -->
+    <div class="card" data-cat="工具" data-search="原理图 检查 ERC 电容过压 单网络悬空 I2C 冲突 pull-up 违规 语义级">
+      <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+      <div class="card-title">原理图自动检查器</div>
+      <div class="card-desc">语义级原理图检查，识别电容过压、单网络悬空、I2C 冲突、Pull-up 违规等常见设计问题。</div>
+      <div class="card-tags"><span class="tag">原理图</span><span class="tag">ERC</span><span class="tag">自动检查</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>工具</span>
+        <a class="open-btn" href="https://schematic-auto-checker.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-        const matchCat    = activeCategory === '全部' || cat === activeCategory;
-        const matchSearch = !q || searchData.includes(q) || title.includes(q) || desc.includes(q);
+    <!-- 19. Camera 开发指南 -->
+    <div class="card" data-cat="知识库" data-search="camera 开发指南 MIPI ISP VCM 硬件开发 全流程 摄像头">
+      <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+      <div class="card-title">Camera 开发指南</div>
+      <div class="card-desc">Camera 硬件开发全流程知识库，覆盖 MIPI、ISP、VCM、模组选型等。</div>
+      <div class="card-tags"><span class="tag">Camera</span><span class="tag">MIPI</span><span class="tag">ISP</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>知识库</span>
+        <a class="open-btn" href="https://camera-dev-guide.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-        if (matchCat && matchSearch) {
-          card.style.display = '';
-          // 高亮匹配的卡片
-          if (q) {
-            card.style.borderColor = 'rgba(59,130,246,0.5)';
-          } else {
-            card.style.borderColor = '';
-          }
-          visible++;
-        } else {
-          card.style.display = 'none';
-          card.style.borderColor = '';
-        }
-      });
+    <!-- 20. 电机驱动指南 -->
+    <div class="card" data-cat="知识库" data-search="电机 驱动 设计指南 机器人 功率级 栅极驱动 保护电路">
+      <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+      <div class="card-title">电机驱动设计指南</div>
+      <div class="card-desc">机器人电机驱动硬件设计知识库，涵盖功率级、栅极驱动、保护电路、散热设计。</div>
+      <div class="card-tags"><span class="tag">电机</span><span class="tag">驱动</span><span class="tag">机器人</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>知识库</span>
+        <a class="open-btn" href="https://motor-drive-guide.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-      // 更新结果计数
-      const countEl = document.getElementById('search-count');
-      if (countEl) {
-        countEl.textContent = q ? `找到 ${visible} 个工具` : '';
-      }
+    <!-- 21. 硬件知识库 -->
+    <div class="card" data-cat="知识库" data-search="硬件 知识库 hardware knowledge base 参考设计 规范">
+      <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div class="card-title">硬件知识库</div>
+      <div class="card-desc">硬件工程设计参考知识库，涵盖常用设计规范、参考电路和经验总结。</div>
+      <div class="card-tags"><span class="tag">知识库</span><span class="tag">参考设计</span></div>
+      <div class="card-footer">
+        <span class="card-category"><i class="fa-solid fa-folder-open" style="margin-right:4px;opacity:.6"></i>知识库</span>
+        <a class="open-btn" href="https://hardware_knowledge_base.vercel.app/" target="_blank" rel="noopener">打开工具 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-      emptyState.style.display = visible === 0 ? 'block' : 'none';
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <p>没有找到匹配的工具，试试其他关键词？</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 硬件工程师工具箱 · 持续更新 &nbsp;·&nbsp;
+    <a href="https://github.com/27834853-ctrl" target="_blank" rel="noopener">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+  </p>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const searchInput = document.getElementById('searchInput');
+  const tabBtns = document.querySelectorAll('.tab');
+  const emptyState = document.getElementById('emptyState');
+
+  // 统计数字
+  const total = cards.length;
+  const soon = document.querySelectorAll('.card.soon').length;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-online').textContent = total - soon;
+  document.getElementById('stat-soon').textContent = soon;
+
+  // 入场动画
+  cards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), 80 + i * 60));
+
+  let activeCategory = '全部';
+
+  function filterCards() {
+    const q = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+
+    if (q && activeCategory !== '全部') {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      const allTab = [...tabBtns].find(b => b.dataset.cat === '全部');
+      if (allTab) allTab.classList.add('active');
+      activeCategory = '全部';
     }
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeCategory = btn.dataset.cat;
-        filterCards();
-      });
-    });
+    cards.forEach(card => {
+      if (card.id === 'emptyState') return;
+      const cat = card.dataset.cat || '';
+      const searchData = (card.dataset.search || '').toLowerCase();
+      const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('.card-desc')?.textContent || '').toLowerCase();
 
-    searchInput.addEventListener('input', filterCards);
+      const matchCat = activeCategory === '全部' || cat === activeCategory;
+      const matchSearch = !q || searchData.includes(q) || title.includes(q) || desc.includes(q);
 
-    // ESC 键清空搜索
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        searchInput.value = '';
-        filterCards();
-        searchInput.blur();
+      if (matchCat && matchSearch) {
+        card.style.display = '';
+        card.style.borderColor = q ? 'rgba(59,130,246,0.5)' : '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+        card.style.borderColor = '';
       }
     });
-  </script>
 
+    emptyState.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { searchInput.value = ''; filterCards(); searchInput.blur(); }
+  });
+</script>
 </body>
 </html>
-
