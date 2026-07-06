@@ -2,7 +2,7 @@
 
 > 硬件工程师在线工具箱，汇聚多个专业设计计算工具，覆盖电源/PCB/信号完整性/模拟/数字全领域
 
-🔗 **在线使用**: https://27834853-ctrl.github.io/hardware-tools-portal/
+🔗 **在线使用**: https://hardware-tools-portal.vercel.app/
 
 ## 功能模块
 
@@ -24,7 +24,7 @@
 
 ## 快速开始
 
-1. 打开 https://27834853-ctrl.github.io/hardware-tools-portal/
+1. 打开 https://hardware-tools-portal.vercel.app/
 2. 使用顶部 Tab 筛选工具类别（电源 / PCB / 信号完整性 / 数字 / 模拟）
 3. 搜索框输入关键词快速定位（如输入 "MIPI" 或 "via"）
 4. 点击工具卡片「打开工具 →」即可跳转到对应工具
