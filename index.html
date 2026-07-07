@@ -85,7 +85,13 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-  </style>
+  
+    /* WCAG 2.4.7 focus indicator - Round 2D a11y batch */
+    input:focus-visible, button:focus-visible, select:focus-visible,
+    textarea:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid currentColor !important;
+      outline-offset: 2px !important;
+    }</style>
 </head>
 <body>
 
